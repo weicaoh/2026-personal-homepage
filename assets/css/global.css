@@ -416,6 +416,13 @@ html.auto-night body .navbar-brand::before {
     overflow-wrap: anywhere;
 }
 
+.footer-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+}
+
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
     font-weight: 700;
@@ -492,6 +499,8 @@ h1, h2, h3, h4, h5, h6,
     width: auto;
     height: 200px;
     max-width: 100%;
+    margin-right: auto;
+    margin-left: auto;
     object-fit: contain;
 }
 
