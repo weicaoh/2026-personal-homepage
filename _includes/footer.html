@@ -1,4 +1,23 @@
 <footer class="footer flex-shrink-0 border-top py-2 mt-5 bg-white small">
+    <div class="meteor-field" aria-hidden="true">
+        <span class="meteor meteor-one"></span>
+        <span class="meteor meteor-two"></span>
+        <span class="meteor meteor-three"></span>
+        <span class="meteor meteor-four"></span>
+        <span class="meteor meteor-five"></span>
+        <span class="meteor meteor-six"></span>
+        <span class="meteor meteor-seven"></span>
+        <span class="meteor meteor-eight"></span>
+        <span class="meteor meteor-nine"></span>
+        <span class="meteor meteor-ten"></span>
+        <span class="meteor meteor-eleven"></span>
+        <span class="meteor meteor-twelve"></span>
+        <span class="star star-one"><img src="{{ '/assets/images/etc/blue-star.svg' | relative_url }}" alt=""></span>
+        <span class="star star-two"><img src="{{ '/assets/images/etc/blue-star.svg' | relative_url }}" alt=""></span>
+        <span class="star star-three"><img src="{{ '/assets/images/etc/blue-star.svg' | relative_url }}" alt=""></span>
+        <span class="star star-four"><img src="{{ '/assets/images/etc/blue-star.svg' | relative_url }}" alt=""></span>
+        <span class="star star-five"><img src="{{ '/assets/images/etc/blue-star.svg' | relative_url }}" alt=""></span>
+    </div>
     <div class="{% if page.container_class %}{{ page.container_class }}{% else %}container-lg{% endif %}">
         <div class="row my-3">
             <div class="col-6">
@@ -7,10 +26,120 @@
                 </div>
             </div>
             <div class="col-6">
-                <div class="text-right text-muted">
+                <div class="footer-acknowledgement text-right text-muted" title="{{ site.data.display.footer_text | strip_html }}">
                     {{ site.data.display.footer_text }}
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        (function () {
+            var stars = document.querySelectorAll('.star');
+            var starFilters = [
+                'hue-rotate(0deg) saturate(0.82) brightness(1.05)',
+                'hue-rotate(5deg) saturate(0.52) brightness(1.28)'
+            ];
+
+            stars.forEach(function (star) {
+                var rotation = Math.floor(Math.random() * 71) - 35;
+                var filter = starFilters[Math.floor(Math.random() * starFilters.length)];
+                var zone = Math.floor(Math.random() * 4);
+                var top;
+                var left;
+
+                if (zone === 0) {
+                    top = 12 + Math.random() * 72;
+                    left = 3 + Math.random() * 14;
+                } else if (zone === 1) {
+                    top = 12 + Math.random() * 72;
+                    left = 83 + Math.random() * 14;
+                } else if (zone === 2) {
+                    top = 8 + Math.random() * 12;
+                    left = 18 + Math.random() * 64;
+                } else {
+                    top = 82 + Math.random() * 10;
+                    left = 18 + Math.random() * 64;
+                }
+
+                star.style.setProperty('--star-rotation', rotation + 'deg');
+                star.style.top = top + '%';
+                star.style.left = left + '%';
+                star.querySelector('img').style.filter = filter;
+
+                star.setAttribute('role', 'button');
+                star.setAttribute('tabindex', '0');
+                star.setAttribute('aria-label', '消散星星');
+
+                function burstStar() {
+                    if (star.classList.contains('star-bursting')) {
+                        return;
+                    }
+
+                    star.classList.add('star-bursting');
+
+                    function restartStar(event) {
+                        if (event.target !== star || event.animationName !== 'star-burst') {
+                            return;
+                        }
+
+                        star.classList.remove('star-bursting', 'effect-disabled');
+                        star.style.animation = 'none';
+                        void star.offsetWidth;
+                        star.style.animation = '';
+                        star.removeEventListener('animationend', restartStar);
+                    }
+
+                    star.addEventListener('animationend', restartStar);
+                }
+
+                star.addEventListener('click', burstStar);
+                star.addEventListener('keydown', function (event) {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        burstStar();
+                    }
+                });
+            });
+
+            document.querySelectorAll('[data-effect-toggle]').forEach(function (button) {
+                button.addEventListener('click', function () {
+                    var enabled = button.getAttribute('aria-pressed') === 'true';
+                    var nextState = !enabled;
+                    var target = button.getAttribute('data-effect-toggle');
+                    var label = target === '.meteor' ? '流星' : '星星';
+
+                    document.querySelectorAll(target).forEach(function (effect) {
+                        effect.classList.toggle('effect-disabled', !nextState);
+                    });
+                    button.setAttribute('aria-pressed', String(nextState));
+                    button.classList.toggle('is-active', nextState);
+                    button.title = (nextState ? '关闭' : '开启') + label + '效果';
+                    button.setAttribute('aria-label', button.title);
+                });
+            });
+
+            document.querySelectorAll('[data-theme-toggle]').forEach(function (button) {
+                var automaticNight = document.documentElement.classList.contains('auto-night');
+                button.setAttribute('aria-pressed', String(automaticNight));
+                button.classList.toggle('is-active', automaticNight);
+                button.title = (automaticNight ? '关闭' : '开启') + '夜间模式';
+                button.setAttribute('aria-label', button.title);
+
+                button.addEventListener('click', function () {
+                    document.documentElement.classList.remove('auto-night');
+                    var enabled = automaticNight ? false : document.body.classList.toggle('night-mode');
+                    automaticNight = false;
+                    if (enabled) {
+                        document.body.style.setProperty('background', '#061326', 'important');
+                    } else {
+                        document.body.style.removeProperty('background');
+                    }
+                    button.setAttribute('aria-pressed', String(enabled));
+                    button.classList.toggle('is-active', enabled);
+                    button.title = (enabled ? '关闭' : '开启') + '夜间模式';
+                    button.setAttribute('aria-label', button.title);
+                });
+            });
+        }());
+    </script>
 </footer>

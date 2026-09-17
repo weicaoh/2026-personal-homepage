@@ -2,12 +2,12 @@ pages:
 # NOTE: `name` field must match the `navbar_title` field in the page's front matter to ensure the correct page is highlighted in the navbar.
 #       For example, the `navbar_title` field in `showcase.html` is "Showcase" and the `name` field here should also be "Showcase"
 - name: Home
-  url: /
+  url: /index.html
 - name: Home (Layout 2)
-  url: /index_layout2
+  url: /index_layout2.html
 - name: Publications
-  url: /publications
+  url: /publications.html
 - name: Blog
-  url: /blog
+  url: /blog.html
 - name: Showcase
-  url: /showcase
+  url: /showcase.html

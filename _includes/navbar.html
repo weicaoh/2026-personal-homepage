@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm navbar-light fixed-top mb-5 shadow-sm">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm">
     <div class="{% if page.container_class %}{{ page.container_class }}{% else %}container-lg{% endif %}">
         <a class="navbar-brand"><strong>{{site.data.profile.navbar_name}}</strong></a>
         <button class="navbar-toggler" style="font-size: 1em; padding: 0.5em;" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,6 +13,17 @@
                 </li>
                 {% endfor %}
             </ul>
+        </div>
+        <div class="effect-controls" role="group" aria-label="Background effects">
+            <button type="button" class="effect-toggle is-active" data-effect-toggle=".meteor" aria-pressed="true" title="关闭流星效果" aria-label="关闭流星效果">
+                <i class="fas fa-meteor" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="effect-toggle is-active" data-effect-toggle=".star" aria-pressed="true" title="关闭星星效果" aria-label="关闭星星效果">
+                <i class="fas fa-star" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="effect-toggle" data-theme-toggle aria-pressed="false" title="开启夜间模式" aria-label="开启夜间模式">
+                <i class="fas fa-moon" aria-hidden="true"></i>
+            </button>
         </div>
     </div>
 </nav>

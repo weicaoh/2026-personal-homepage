@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Decorative star">
+  <defs>
+    <radialGradient id="star-gradient" cx="50%" cy="48%" r="70%">
+      <stop offset="0%" stop-color="#36aeda" stop-opacity="0.98" />
+      <stop offset="38%" stop-color="#5fc3e5" stop-opacity="0.88" />
+      <stop offset="72%" stop-color="#a9e1f1" stop-opacity="0.48" />
+      <stop offset="100%" stop-color="#d9f3fa" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <path d="M44.5 23
+    Q50 8 55.5 23
+    Q61 38 75.5 38
+    Q90 38 80 47.5
+    Q70 57 73 71
+    Q76 85 63 77.5
+    Q50 70 37 77.5
+    Q24 85 27 71
+    Q30 57 20 47.5
+    Q10 38 24.5 38
+    Q39 38 44.5 23 Z"
+    fill="url(#star-gradient)" />
+</svg>

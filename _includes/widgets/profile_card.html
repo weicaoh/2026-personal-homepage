@@ -9,7 +9,12 @@
                         <div class="figure float-right ml-4 mb-4 d-none d-md-block">
                             <img 
                                 src="{{ site.data.profile.portrait_url | relative_url }}" 
-                                class="figure-img img-fluid img-thumbnail" 
+                                class="figure-img img-fluid img-thumbnail profile-portrait" 
+                                width="900"
+                                height="1200"
+                                loading="eager"
+                                decoding="async"
+                                fetchpriority="high"
                                 style="height: 200px;"
                                 data-toggle="tooltip" 
                                 data-placement="top" 
@@ -24,7 +29,7 @@
                             {% if site.data.profile.portrait_url %}
                             <div class="ml-auto d-md-none">
                                 <a target="_blank" href="{{ site.data.profile.portrait_url | relative_url }}">
-                                    <img src="{{ site.data.profile.portrait_url | relative_url }}" class="rounded-circle" style="height: 48px;" alt="Portrait">
+                                    <img src="{{ site.data.profile.portrait_url | relative_url }}" class="rounded-circle profile-portrait-mobile" width="900" height="1200" loading="eager" decoding="async" alt="Portrait">
                                 </a>
                             </div>
                             {% endif %}
@@ -34,7 +39,7 @@
                             {% if position.logo -%}
                             <img src="{{ position.logo | relative_url }}" alt="Logo" class="inline-badge"/>
                             {%- endif %}
-                            {{ position.name }}<br/>
+                            <span class="no-break">{{ position.name }}</span><br/>
                             {% endfor %}
                         </div>
                         <div class="text-profile-bio mt-3" {% if site.data.profile.short_bio_text_justify %}style="text-align: justify;"{% endif %}>

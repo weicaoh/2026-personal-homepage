@@ -9,13 +9,18 @@
                         <div class="figure d-none d-md-block">
                             <img 
                                 src="{{ site.data.profile.portrait_url | relative_url }}" 
-                                class="figure-img img-fluid" 
+                                class="figure-img img-fluid profile-portrait" 
+                                width="900"
+                                height="1200"
+                                loading="eager"
+                                decoding="async"
+                                fetchpriority="high"
                                 data-toggle="tooltip" 
                                 data-placement="top" 
                                 title="{{ site.data.profile.portrait_caption }}">
                         </div>
                         <div class="mb-3 d-md-none text-center">
-                            <img src="{{ site.data.profile.portrait_url | relative_url }}" class="rounded-circle" style="max-width: 50%;" alt="Portrait">
+                            <img src="{{ site.data.profile.portrait_url | relative_url }}" class="rounded-circle profile-portrait-mobile" width="900" height="1200" loading="eager" decoding="async" alt="Portrait">
                         </div>
                         {% endif %}
                     </div>
@@ -29,7 +34,7 @@
                 <div class="row small">
                     <div class="col text-center">
                         {% for position in site.data.profile.positions %}
-                        {{ position.name }}<br/>
+                        <span class="no-break">{{ position.name }}</span><br/>
                         {% endfor %}
                     </div>
                 </div>
